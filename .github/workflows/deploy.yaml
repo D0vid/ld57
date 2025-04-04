@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: web
-          path: project/${{ env.EXPORT_NAME }}/build/web
+          path: ${{ env.EXPORT_NAME }}/build/web
 
       - name: Publish to itch.io
         uses: josephbmanley/butler-publish-itchio-action@v1.0.3
@@ -47,7 +47,7 @@ jobs:
           CHANNEL: web
           ITCH_GAME: ld57
           ITCH_USER: d0v1d
-          PACKAGE: project/${{ env.EXPORT_NAME }}/build/web
+          PACKAGE: ${{ env.EXPORT_NAME }}/build/web
 
       - name: Notify Discord Channel
         env:
