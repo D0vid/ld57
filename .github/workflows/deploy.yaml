@@ -54,4 +54,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: '@_kazuryo_ WE COOKING OR WHAT 👀👀👀 ??? https://d0v1d.itch.io/ld57 !'
+          args: '<@245327587369287682> WE COOKING OR WHAT 👀👀👀 ??? https://d0v1d.itch.io/ld57 !'
