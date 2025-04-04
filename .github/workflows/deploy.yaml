@@ -32,7 +32,7 @@ jobs:
           rsync -Rr . ./$EXPORT_NAME
           cd $EXPORT_NAME
           mkdir -v -p build/web
-          godot -v --export "HTML5" build/web/index.html
+          godot -v --export-release "HTML5" build/web/index.html
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
