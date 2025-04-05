@@ -1,8 +1,6 @@
-extends StaticBody2D
+extends Area2D
 
 class_name Word
-
-var player: Player
 
 @export var label: RichTextLabel
 

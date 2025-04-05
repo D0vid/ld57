@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=9 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
 [ext_resource type="Script" uid="uid://bluepdtgpqy5d" path="res://player/player.gd" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4oitaisaf00d" path="res://word/word.tscn" id="4_3wy1v"]
 [ext_resource type="Script" uid="uid://juxawvtlnhfp" path="res://main/word_manager.gd" id="5_3wy1v"]
+[ext_resource type="Script" uid="uid://eycs8ptnup57" path="res://hud/hp_label.gd" id="6_67ri8"]
 [ext_resource type="Script" uid="uid://d03duve5t1h3p" path="res://main/typing_area.gd" id="6_kfbq2"]
+[ext_resource type="Script" uid="uid://du25iy8k3sc1g" path="res://hud/insight_label.gd" id="7_grrlh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_53q0u")
@@ -35,28 +37,38 @@ position = Vector2(1280, 720)
 [node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints" groups=["spawn_points"]]
 position = Vector2(0, 720)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="TypingArea" type="LineEdit" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Health: 100"
+script = ExtResource("6_67ri8")
+
+[node name="InsightLabel" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Insight: 0"
+script = ExtResource("7_grrlh")
+
+[node name="TypingArea" type="LineEdit" parent="HUD/MarginContainer"]
 custom_minimum_size = Vector2(400, 30)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -31.0
-offset_right = 200.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 keep_editing_on_text_submit = true
 script = ExtResource("6_kfbq2")

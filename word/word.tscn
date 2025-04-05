@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp38"]
 size = Vector2(110, 29)
 
-[node name="Word" type="StaticBody2D" node_paths=PackedStringArray("label")]
+[node name="Word" type="Area2D" node_paths=PackedStringArray("label")]
 script = ExtResource("1_2ihii")
 label = NodePath("RichTextLabel")
 
