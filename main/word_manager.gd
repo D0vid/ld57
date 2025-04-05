@@ -32,6 +32,7 @@ func _ready() -> void:
 	word_timer.timeout.connect(_on_timeout)
 	EventBus.letter_typed.connect(_on_letter_typed)
 	EventBus.word_submitted.connect(_on_word_submitted)
+	player.area_entered.connect(_on_area_entered)
 
 func _process(delta: float) -> void:
 	#timer stuff
@@ -46,7 +47,6 @@ func _on_timeout() -> void:
 	spawn_word()
 	
 func spawn_word() -> void:
-	print('spawni spowno')
 	var word_text: String = dictionary.pop_back()
 	dictionary.push_front(word_text)
 	var word_instance: Word = word_scene.instantiate() as Word
@@ -58,7 +58,6 @@ func spawn_word() -> void:
 func get_random_spawn_point() -> Vector2:
 	var spawn_points: Array[Node] = get_tree().get_nodes_in_group(&"spawn_points")
 	var random: int = randi_range(0, 3)
-	print('randi %s' % random)
 	var spawn_point: Marker2D = spawn_points[random] as Marker2D
 	return spawn_point.position
 	
@@ -71,9 +70,18 @@ func _on_letter_typed(text: String) -> void:
 func _on_word_submitted(text: String) -> void:
 	for i in range(0, words.size()):
 		var word: Word = words[i]
-		print("on word submitted %s ==? %s" % [word.get_text(), text])
-		if word.get_text() == text:
-			word.queue_free()
+		if word.get_text() == text: # word matches
 			words.remove_at(i)
+			word.queue_free()
+			player.insight += 10
 			return
+	# if no words match
+	player.health -= 10
 	
+func _on_area_entered(body: Node2D) -> void:
+	print("black pink")
+	if (body is Word):
+		var word: Word = body as Word
+		words.erase(word)
+		word.queue_free()
+		player.health -= 10

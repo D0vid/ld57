@@ -1,11 +1,8 @@
-extends StaticBody2D
+extends Area2D
 
 class_name Word
 
-var player: Player
-
 @export var label: RichTextLabel
-
 
 func _ready() -> void:
 	add_to_group(&"words")
@@ -18,4 +15,3 @@ func set_text(text: String) -> void:
 
 func get_text() -> String:
 	return label.text
-
