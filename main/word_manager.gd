@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		
 	#move words stuff
 	for word in words:
-		word.move_toward(player.position, delta, 400)
+		word.move_toward(player.position, delta, 100)
 		
 	
 func _on_timeout() -> void:
