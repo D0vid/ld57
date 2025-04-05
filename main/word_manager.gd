@@ -40,7 +40,8 @@ func _process(delta: float) -> void:
 		
 	#move words stuff
 	for word in words:
-		word.position = word.position.move_toward(player.position, delta * 100)
+		word.move_toward(player.position, delta, 400)
+		
 	
 func _on_timeout() -> void:
 	spawn_word()
