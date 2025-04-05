@@ -30,7 +30,15 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="LD57"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/richtext2/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[richer_text_label]
+
+fonts={}
