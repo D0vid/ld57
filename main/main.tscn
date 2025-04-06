@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=13 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
 [ext_resource type="Script" uid="uid://bluepdtgpqy5d" path="res://player/player.gd" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4oitaisaf00d" path="res://word/normal_word.tscn" id="4_3wy1v"]
 [ext_resource type="Script" uid="uid://juxawvtlnhfp" path="res://main/word_manager.gd" id="5_3wy1v"]
+[ext_resource type="Script" uid="uid://qasydljb8rv5" path="res://word/word_factory.gd" id="5_fwcvl"]
 [ext_resource type="Script" uid="uid://eycs8ptnup57" path="res://hud/hp_label.gd" id="6_67ri8"]
 [ext_resource type="PackedScene" uid="uid://bxdvcmku4xyc6" path="res://word/blinking_word.tscn" id="6_bsumw"]
 [ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="6_fwcvl"]
@@ -19,12 +20,17 @@ script = ExtResource("1_53q0u")
 position = Vector2(960, 540)
 script = ExtResource("3_c651c")
 
-[node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "player")]
+[node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "word_factory", "player")]
 script = ExtResource("5_3wy1v")
 word_timer = NodePath("../WordTimer")
-normal_word_scene = ExtResource("4_3wy1v")
-blinking_word_scene = ExtResource("6_bsumw")
+word_factory = NodePath("../WordFactory")
 player = NodePath("../Player")
+
+[node name="WordFactory" type="Node" parent="."]
+script = ExtResource("5_fwcvl")
+normal_world_scene = ExtResource("4_3wy1v")
+blinking_word_scene = ExtResource("6_bsumw")
+metadata/_custom_type_script = "uid://qasydljb8rv5"
 
 [node name="WordTimer" type="Timer" parent="."]
 

@@ -26,8 +26,8 @@ var dictionary: Array[String] = [
 var words: Array[BaseWord]  = []
 
 @export var word_timer: Timer
-@export var normal_word_scene: PackedScene
-@export var blinking_word_scene: PackedScene
+
+@export var word_factory: WordFactory
 
 @export var player: Player
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 	EventBus.letter_typed.connect(_on_letter_typed)
 	EventBus.word_submitted.connect(_on_word_submitted)
 	player.area_entered.connect(_on_area_entered)
+	
 
 func _physics_process(delta: float) -> void:
 	#timer stuff
@@ -53,10 +54,14 @@ func _on_timeout() -> void:
 func spawn_word() -> void:
 	var word_text: String = dictionary.pop_back()
 	dictionary.push_front(word_text)
-	var word_instance: BaseWord = blinking_word_scene.instantiate() as BaseWord
-	word_instance.set_text(word_text)
-	word_instance.set_bbcode_template("[wave]%s[]")
-	word_instance.re_render()
+	
+	var word_instance: BaseWord
+	
+	if randi_range(0,1000) > 200:
+		word_instance = word_factory.create_normal_word(word_text, "wave")
+	else:
+		word_instance = word_factory.create_blinking_word(word_text, "jit2")
+	
 	word_instance.position = get_random_spawn_point()
 	get_parent().add_child(word_instance)
 	words.push_back(word_instance)

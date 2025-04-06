@@ -119,7 +119,7 @@ static func set_fonts(node: Node, fname: String, bold_weight := BOLD_WEIGHT, ita
 		push_error("TODO")
 
 static func get_fonts(fname: String, bold_weight := BOLD_WEIGHT, italics_slant := ITALICS_SLANT, italics_weight := ITALICS_WEIGHT, font_paths: Variant = null) -> Dictionary:
-	var fonts := font_paths if font_paths else _scan_for_fonts({})
+	var fonts := font_paths if font_paths != null else _scan_for_fonts({})
 	var out := {}
 	
 	# Normal font.

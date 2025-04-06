@@ -7,9 +7,10 @@
 resource_local_to_scene = true
 size = Vector2(153, 48.5)
 
-[node name="NormalWord" type="Area2D" node_paths=PackedStringArray("label")]
+[node name="NormalWord" type="Area2D" node_paths=PackedStringArray("label", "collision_shape")]
 script = ExtResource("1_hqwqq")
 label = NodePath("RicherTextLabel")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(76.5, 25)
