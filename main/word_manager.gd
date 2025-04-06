@@ -91,6 +91,9 @@ func _on_word_submitted(text: String) -> void:
 		if word.get_text() == text: # word matches
 			mark_as_delete.push_front(i)
 			player.insight += 10
+		else:
+			word.reset()
+			word.re_render()
 		
 	
 	for index_to_delete in mark_as_delete:
