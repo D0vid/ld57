@@ -19,8 +19,14 @@ var bbcode_template: String
 
 var submitted_valid_input: String
 
+var bezier_control
+
 func _ready() -> void:
-	add_to_group(&"words")
+	if randi_range(0,1) == 0:
+		bezier_control = 1000
+	else:
+		bezier_control = -1000
+	
 func _process(_delta: float) -> void:
 	pass
 
@@ -41,7 +47,40 @@ func reset() -> void:
 func get_text() -> String:
 	return unformatted_text
 
+func _move_toward_bezier(destination: Vector2, delta: float, speed: int, control_distance: float) -> void:
+	# Calculate the direction vector from the initial position to the destination (center)
+	var direction_to_center = (destination - position).normalized()
+
+	# Calculate the perpendicular vector
+	var perpendicular_vector = Vector2(-direction_to_center.y, direction_to_center.x)
+
+	# Calculate the control point position
+	var control_point = destination + perpendicular_vector * control_distance
+
+	# Calculate the current parameter t based on the distance to the destination
+	var distance_to_destination = position.distance_to(destination)
+	var t = 1.0 - (distance_to_destination / position.distance_to(control_point))
+	t = clamp(t, 0.0, 1.0)
+
+	# Calculate the position on the Bezier curve using the parametric equations
+	var bezier_position = Vector2(
+							  (1.0 - t) * (1.0 - t) * position.x + 2.0 * (1.0 - t) * t * control_point.x + t * t * destination.x,
+							  (1.0 - t) * (1.0 - t) * position.y + 2.0 * (1.0 - t) * t * control_point.y + t * t * destination.y
+						  )
+
+	# Calculate the direction from the current position to the Bezier position
+	var direction = (bezier_position - position).normalized()
+
+	# Calculate the forward movement
+	var forward_movement = direction * delta * speed
+
+	# Update the position
+	position += forward_movement	
+
 func move_toward(destination: Vector2, delta: float, speed: int) -> void:
+	_move_toward_bezier(destination, delta, speed, bezier_control)
+	
+func _move_toward_straighto(destination: Vector2, delta: float, speed: int) -> void:
 	var direction: Vector2 = position.direction_to(destination)
 	var forward_movement: Vector2 = direction * delta * speed
 	position += forward_movement 
