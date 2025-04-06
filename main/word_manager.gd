@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		
 	#move words stuff
 	for word in words:
-		word.move_toward(player.position, delta, 30)
+		word.move_toward(player.position, delta, 100)
 		
 	
 func _on_timeout() -> void:
@@ -121,7 +121,6 @@ func _on_word_submitted(text: String) -> void:
 		player.health -= 10
 
 func _on_area_entered(body: Node2D) -> void:
-	print("black pink")
 	if (body is BaseWord):
 		var word: BaseWord = body as BaseWord
 		words.erase(word)
