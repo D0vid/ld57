@@ -18,7 +18,7 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("1_7a41g")
-bbcode = "[wave][green;b]D[]iscoveryy[]
+bbcode = "[wave][green;b]D[]iscovery[]
 "
 effects = 2
 alignment = 1

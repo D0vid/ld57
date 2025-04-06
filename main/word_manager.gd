@@ -28,6 +28,7 @@ var words: Array[BaseWord]  = []
 @export var word_timer: Timer
 @export var normal_word_scene: PackedScene
 @export var blinking_word_scene: PackedScene
+@export var multiple_validation_word: PackedScene
 
 @export var player: Player
 
@@ -53,7 +54,7 @@ func _on_timeout() -> void:
 func spawn_word() -> void:
 	var word_text: String = dictionary.pop_back()
 	dictionary.push_front(word_text)
-	var word_instance: BaseWord = blinking_word_scene.instantiate() as BaseWord
+	var word_instance: BaseWord = multiple_validation_word.instantiate() as BaseWord
 	word_instance.set_text(word_text)
 	word_instance.set_bbcode_template("[wave]%s[]")
 	word_instance.re_render()
@@ -97,8 +98,14 @@ func _on_word_submitted(text: String) -> void:
 	for i: int in range(0, words.size()):
 		var word: BaseWord = words[i]
 		if word.get_text() == text: # word matches
-			mark_as_delete.push_front(i)
-			player.insight += 10
+			if (word.has_method("decrement_health") and word.health > 1):
+				word.decrement_health()
+				if (word.health == 0):
+					mark_as_delete.push_front(i)
+					player.insight += 10	
+			else:
+				mark_as_delete.push_front(i)
+				player.insight += 10
 		else:
 			word.reset()
 			word.re_render()

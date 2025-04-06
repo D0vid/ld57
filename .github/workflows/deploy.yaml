@@ -54,4 +54,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: '<@245327587369287682> <@245327587369287682> <@245327587369287682> IL AVAIT LES MOTS !!! ??? https://d0v1d.itch.io/ld57 <@245327587369287682> <@245327587369287682> <@245327587369287682> !'
+          args: '<@245327587369287682> <@228490880439418880> IL AVAIT LES MOTS !!! ??? https://d0v1d.itch.io/ld57 <@228490880439418880> <@245327587369287682> !'
