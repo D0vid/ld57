@@ -1,4 +1,4 @@
-﻿extends Area2D
+extends Area2D
 
 class_name BaseWord
 
@@ -10,6 +10,7 @@ enum WordStateEnum {
 
 
 @export var label: RicherTextLabel
+@export var collision_shape: CollisionShape2D
 
 var unformatted_text: String
 var display_text: String
@@ -25,7 +26,7 @@ func _process(_delta: float) -> void:
 
 func set_text(text: String) -> void:
 	unformatted_text = text
-	label.size = Vector2(label.size.x, text.length() * 10)
+	collision_shape.shape.size = Vector2(18 * text.length(), 50)
 
 func set_bbcode_template(bbcode_template: String):
 	self.bbcode_template = bbcode_template
