@@ -1,6 +1,7 @@
 extends LineEdit
 
 func _ready() -> void:
+	grab_focus.call_deferred()
 	text_submitted.connect(_on_text_submitted)
 	text_changed.connect(_on_text_changed)
 	
