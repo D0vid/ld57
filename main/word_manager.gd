@@ -56,12 +56,16 @@ func spawn_word() -> void:
 	dictionary.push_front(word_text)
 	
 	var word_instance: BaseWord
+	var random_spawn = randi_range(0,1000)
 	
-	if randi_range(0,1000) > 200:
-		word_instance = word_factory.create_normal_word(word_text, "wave")
-	else:
+	
+	if random_spawn > 950:
+		word_instance = word_factory.create_multivalidation_word(word_text, "heart")
+	elif random_spawn > 800:
 		word_instance = word_factory.create_blinking_word(word_text, "jit2")
-	
+	else:
+		word_instance = word_factory.create_normal_word(word_text, "wave")
+
 	word_instance.position = get_random_spawn_point()
 	get_parent().add_child(word_instance)
 	words.push_back(word_instance)

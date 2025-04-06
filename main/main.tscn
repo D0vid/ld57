@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=14 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
@@ -24,9 +24,6 @@ script = ExtResource("3_c651c")
 [node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "word_factory", "player")]
 script = ExtResource("5_3wy1v")
 word_timer = NodePath("../WordTimer")
-normal_word_scene = ExtResource("4_3wy1v")
-blinking_word_scene = ExtResource("6_bsumw")
-multiple_validation_word = ExtResource("7_fwcvl")
 word_factory = NodePath("../WordFactory")
 player = NodePath("../Player")
 
@@ -34,6 +31,7 @@ player = NodePath("../Player")
 script = ExtResource("5_fwcvl")
 normal_world_scene = ExtResource("4_3wy1v")
 blinking_word_scene = ExtResource("6_bsumw")
+multi_validation_word_scene = ExtResource("7_fwcvl")
 metadata/_custom_type_script = "uid://qasydljb8rv5"
 
 [node name="WordTimer" type="Timer" parent="."]

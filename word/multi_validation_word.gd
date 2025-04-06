@@ -1,5 +1,5 @@
 extends BaseWord
-
+class_name MultiValidationWord
 var health: int = 0 : get = _get_health, set = _set_health
 
 @export var progress_bar: TextureProgressBar
