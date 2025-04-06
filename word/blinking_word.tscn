@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4oitaisaf00d"]
+[gd_scene load_steps=4 format=3 uid="uid://bxdvcmku4xyc6"]
 
-[ext_resource type="Script" uid="uid://udwdffchx050" path="res://word/word.gd" id="1_2ihii"]
-[ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="2_17hb6"]
+[ext_resource type="Script" uid="uid://cg23kiln24gri" path="res://word/blinking_word.gd" id="1_voj0w"]
+[ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="2_h38my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp38"]
 size = Vector2(110, 29)
 
-[node name="Word" type="Area2D" node_paths=PackedStringArray("label")]
-script = ExtResource("1_2ihii")
+[node name="BlinkingWord" type="Area2D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_voj0w")
 label = NodePath("RicherTextLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -16,18 +16,18 @@ shape = SubResource("RectangleShape2D_5vp38")
 
 [node name="RicherTextLabel" type="RichTextLabel" parent="."]
 clip_contents = false
-custom_minimum_size = Vector2(0, 23)
+custom_minimum_size = Vector2(0, 36)
 offset_right = 144.0
 offset_bottom = 40.0
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
 fit_content = true
-script = ExtResource("2_17hb6")
+script = ExtResource("2_h38my")
 bbcode = "[wave][green;b]D[]iscovery[]
 "
 effects = 2
@@ -36,7 +36,7 @@ color = Color(1, 1, 1, 1)
 emoji_scale = 1.0
 font = ""
 font_auto_setup = true
-font_size = 16
+font_size = 26
 font_bold_weight = 1.5
 font_italics_slant = 0.25
 font_italics_weight = -0.25

@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=12 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
 [ext_resource type="Script" uid="uid://bluepdtgpqy5d" path="res://player/player.gd" id="3_c651c"]
-[ext_resource type="PackedScene" uid="uid://c4oitaisaf00d" path="res://word/word.tscn" id="4_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://c4oitaisaf00d" path="res://word/normal_word.tscn" id="4_3wy1v"]
 [ext_resource type="Script" uid="uid://juxawvtlnhfp" path="res://main/word_manager.gd" id="5_3wy1v"]
 [ext_resource type="Script" uid="uid://eycs8ptnup57" path="res://hud/hp_label.gd" id="6_67ri8"]
+[ext_resource type="PackedScene" uid="uid://bxdvcmku4xyc6" path="res://word/blinking_word.tscn" id="6_bsumw"]
 [ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="6_fwcvl"]
 [ext_resource type="Script" uid="uid://d03duve5t1h3p" path="res://main/typing_area.gd" id="6_kfbq2"]
 [ext_resource type="Script" uid="uid://du25iy8k3sc1g" path="res://hud/insight_label.gd" id="7_grrlh"]
@@ -21,7 +22,8 @@ script = ExtResource("3_c651c")
 [node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "player")]
 script = ExtResource("5_3wy1v")
 word_timer = NodePath("../WordTimer")
-word_scene = ExtResource("4_3wy1v")
+normal_word_scene = ExtResource("4_3wy1v")
+blinking_word_scene = ExtResource("6_bsumw")
 player = NodePath("../Player")
 
 [node name="WordTimer" type="Timer" parent="."]

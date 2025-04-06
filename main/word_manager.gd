@@ -23,10 +23,12 @@ var dictionary: Array[String] = [
 								"Ground",
 								"Discovery"
 								]
-var words: Array[Word] = []
+var words: Array[BaseWord]  = []
 
 @export var word_timer: Timer
-@export var word_scene: PackedScene
+@export var normal_word_scene: PackedScene
+@export var blinking_word_scene: PackedScene
+
 @export var player: Player
 
 func _ready() -> void:
@@ -51,7 +53,7 @@ func _on_timeout() -> void:
 func spawn_word() -> void:
 	var word_text: String = dictionary.pop_back()
 	dictionary.push_front(word_text)
-	var word_instance: Word = word_scene.instantiate() as Word
+	var word_instance: BaseWord = blinking_word_scene.instantiate() as BaseWord
 	word_instance.set_text(word_text)
 	word_instance.set_bbcode_template("[wave]%s[]")
 	word_instance.re_render()
@@ -66,19 +68,19 @@ func get_random_spawn_point() -> Vector2:
 	return spawn_point.position
 	
 func _on_letter_typed(text: String) -> void:
-	var partial_matching_words: Array[Word] = []
-	var found_total_matching_word: bool = false
+	var partial_matching_words: Array[BaseWord] = []
+	var found_total_matching_word: bool           = false
 	
 	for i in range(0, words.size()):
-		var word: Word = words[i]
+		var word: BaseWord = words[i]
 		if text.is_empty():
 			word.reset()
 			word.re_render()
 		else:
-			var word_matches: Word.WordStateEnum = word.submit_input(text)
-			if word_matches == Word.WordStateEnum.MATCH:
+			var word_matches: BaseWord.WordStateEnum = word.submit_input(text)
+			if word_matches == BaseWord.WordStateEnum.MATCH:
 				found_total_matching_word = true
-			elif word_matches == Word.WordStateEnum.PARTIAL_MATCH:
+			elif word_matches == BaseWord.WordStateEnum.PARTIAL_MATCH:
 				partial_matching_words.push_back(word)
 		
 	if found_total_matching_word:
@@ -93,7 +95,7 @@ func _on_word_submitted(text: String) -> void:
 	var mark_as_delete: Array[int] = []
 	
 	for i: int in range(0, words.size()):
-		var word: Word = words[i]
+		var word: BaseWord = words[i]
 		if word.get_text() == text: # word matches
 			mark_as_delete.push_front(i)
 			player.insight += 10
@@ -103,7 +105,7 @@ func _on_word_submitted(text: String) -> void:
 		
 	
 	for index_to_delete in mark_as_delete:
-		var word: Word = words[index_to_delete]
+		var word: BaseWord = words[index_to_delete]
 		words.remove_at(index_to_delete)
 		word.queue_free()
 		
@@ -113,8 +115,8 @@ func _on_word_submitted(text: String) -> void:
 
 func _on_area_entered(body: Node2D) -> void:
 	print("black pink")
-	if (body is Word):
-		var word: Word = body as Word
+	if (body is BaseWord):
+		var word: BaseWord = body as BaseWord
 		words.erase(word)
 		word.queue_free()
 		player.health -= 10
