@@ -16,6 +16,8 @@ const w = "w"
 const W = "W"
 
 func _process_custom_fx(c: CharFXTransform):
+	
+	
 	match get_char(c):
 		r, l: set_char(c, "w")
 		R, L: set_char(c, "W")

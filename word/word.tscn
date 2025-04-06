@@ -19,7 +19,14 @@ clip_contents = false
 custom_minimum_size = Vector2(0, 23)
 offset_right = 144.0
 offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
+fit_content = true
 script = ExtResource("2_17hb6")
 bbcode = "[wave][green;b]D[]iscovery[]
 "

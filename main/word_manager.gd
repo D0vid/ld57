@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		
 	#move words stuff
 	for word in words:
-		word.move_toward(player.position, delta, 100)
+		word.move_toward(player.position, delta, 30)
 		
 	
 func _on_timeout() -> void:
@@ -52,7 +52,9 @@ func spawn_word() -> void:
 	var word_text: String = dictionary.pop_back()
 	dictionary.push_front(word_text)
 	var word_instance: Word = word_scene.instantiate() as Word
-	word_instance.set_text(word_text, "[wave]%s[]")
+	word_instance.set_text(word_text)
+	word_instance.set_bbcode_template("[wave]%s[]")
+	word_instance.re_render()
 	word_instance.position = get_random_spawn_point()
 	get_parent().add_child(word_instance)
 	words.push_back(word_instance)
@@ -64,17 +66,27 @@ func get_random_spawn_point() -> Vector2:
 	return spawn_point.position
 	
 func _on_letter_typed(text: String) -> void:
+	var found_matching_word: bool = false
+	
 	for i in range(0, words.size()):
 		var word: Word = words[i]
-		if word.get_text().begins_with(text) && !text.is_empty():
-			print("%s == %s" % [word.get_text(), text])
-			word.highlight_typing(text)
-	
+		if text.is_empty():
+			word.reset()
+			word.re_render()
+		else:
+			var word_matches: Word.WordStateEnum = word.submit_input(text)
+			if word_matches == Word.WordStateEnum.MATCH:
+				found_matching_word = true
+				
+			if found_matching_word && word_matches == Word.WordStateEnum.PARTIAL_MATCH:
+				word.reset()
+				word.re_render()
+		
 func _on_word_submitted(text: String) -> void:
 	
-	var mark_as_delete = []
+	var mark_as_delete: Array[int] = []
 	
-	for i in range(0, words.size()):
+	for i: int in range(0, words.size()):
 		var word: Word = words[i]
 		if word.get_text() == text: # word matches
 			mark_as_delete.push_front(i)
@@ -89,7 +101,7 @@ func _on_word_submitted(text: String) -> void:
 	if mark_as_delete.is_empty():
 		# if no words match
 		player.health -= 10
-	
+
 func _on_area_entered(body: Node2D) -> void:
 	print("black pink")
 	if (body is Word):
