@@ -86,7 +86,10 @@ func higlight_error(input: String):
 		label.bbcode = bbcode_template % "[green;b]%s[][red;b]%s[letterswap char=%s]%s[][]%s" % [highlighted_part, previous_bad_input , valid_last_letter, invalid_last_letter, normal_part]
 	else:
 		var remaining_input: String = unformatted_text.trim_prefix(submitted_valid_input)
-		label.bbcode =  bbcode_template % "[green;b]%s[][red;b]%s[]" % [highlighted_part, remaining_input]
+		if remaining_input.is_empty():
+			label.bbcode =  bbcode_template % "[red;b]%s[]" % highlighted_part
+		else:
+			label.bbcode =  bbcode_template % "[green;b]%s[red;b]%s[]" % [highlighted_part, remaining_input]
 		
 
 

@@ -66,7 +66,8 @@ func get_random_spawn_point() -> Vector2:
 	return spawn_point.position
 	
 func _on_letter_typed(text: String) -> void:
-	var found_matching_word: bool = false
+	var partial_matching_words: Array[Word] = []
+	var found_total_matching_word: bool = false
 	
 	for i in range(0, words.size()):
 		var word: Word = words[i]
@@ -76,11 +77,16 @@ func _on_letter_typed(text: String) -> void:
 		else:
 			var word_matches: Word.WordStateEnum = word.submit_input(text)
 			if word_matches == Word.WordStateEnum.MATCH:
-				found_matching_word = true
+				found_total_matching_word = true
+			elif word_matches == Word.WordStateEnum.PARTIAL_MATCH:
+				partial_matching_words.push_back(word)
+		
+	if found_total_matching_word:
+		for partial_matching_word in partial_matching_words:
+			partial_matching_word.reset()
+			partial_matching_word.re_render()
 				
-			if found_matching_word && word_matches == Word.WordStateEnum.PARTIAL_MATCH:
-				word.reset()
-				word.re_render()
+				
 		
 func _on_word_submitted(text: String) -> void:
 	
