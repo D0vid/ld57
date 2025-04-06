@@ -7,3 +7,5 @@ signal word_submitted(text: String)
 signal health_changed(health: int)
 	
 signal insight_changed(insight: int)
+	
+signal start_game_clicked()
