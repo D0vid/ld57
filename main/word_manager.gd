@@ -40,7 +40,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#timer stuff
 	if word_timer.time_left == 0:
-		word_timer.start(3)
+		word_timer.start(1)
 		
 	#move words stuff
 	for word in words:
