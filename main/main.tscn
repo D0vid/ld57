@@ -57,15 +57,14 @@ offset_bottom = 86.0
 texture = ExtResource("10_na0o7")
 
 [node name="HealthLabel" type="Label" parent="HUDLayer/HUD/TextureRect"]
-layout_mode = 2
-offset_left = 89.0
-offset_top = -55.0
-offset_right = 199.0
-offset_bottom = 124.0
+layout_mode = 1
+offset_left = 82.0
+offset_top = 12.0
+offset_right = 164.0
+offset_bottom = 79.0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 48
-text = "
-100"
+text = "100"
 script = ExtResource("6_67ri8")
 
 [node name="InsightLabel" type="Label" parent="HUDLayer/HUD/TextureRect"]

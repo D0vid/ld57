@@ -35,7 +35,7 @@ func _ready() -> void:
 	EventBus.word_submitted.connect(_on_word_submitted)
 	player.area_entered.connect(_on_area_entered)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	#timer stuff
 	if word_timer.time_left == 0:
 		word_timer.start(3)
