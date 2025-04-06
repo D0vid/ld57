@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bxdvcmku4xyc6" path="res://word/blinking_word.tscn" id="6_bsumw"]
 [ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="6_fwcvl"]
 [ext_resource type="Script" uid="uid://d03duve5t1h3p" path="res://main/typing_area.gd" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://qrk42rk8fkbv" path="res://word/multi_validation_word.tscn" id="7_fwcvl"]
 [ext_resource type="Script" uid="uid://du25iy8k3sc1g" path="res://hud/insight_label.gd" id="7_grrlh"]
 [ext_resource type="Texture2D" uid="uid://c6tc513lg6iwx" path="res://main/hud.png" id="10_na0o7"]
 
@@ -23,6 +24,9 @@ script = ExtResource("3_c651c")
 [node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "word_factory", "player")]
 script = ExtResource("5_3wy1v")
 word_timer = NodePath("../WordTimer")
+normal_word_scene = ExtResource("4_3wy1v")
+blinking_word_scene = ExtResource("6_bsumw")
+multiple_validation_word = ExtResource("7_fwcvl")
 word_factory = NodePath("../WordFactory")
 player = NodePath("../Player")
 

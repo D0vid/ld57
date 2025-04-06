@@ -102,8 +102,14 @@ func _on_word_submitted(text: String) -> void:
 	for i: int in range(0, words.size()):
 		var word: BaseWord = words[i]
 		if word.get_text() == text: # word matches
-			mark_as_delete.push_front(i)
-			player.insight += 10
+			if (word.has_method("decrement_health") and word.health > 1):
+				word.decrement_health()
+				if (word.health == 0):
+					mark_as_delete.push_front(i)
+					player.insight += 10	
+			else:
+				mark_as_delete.push_front(i)
+				player.insight += 10
 		else:
 			word.reset()
 			word.re_render()
