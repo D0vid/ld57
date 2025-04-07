@@ -21,6 +21,10 @@ var submitted_valid_input: String
 
 var bezier_control
 
+var speed_multiplier: float = 1.0
+
+var inactive: bool = false
+
 func _ready() -> void:
 	if randi_range(0,1) == 0:
 		bezier_control = 1000
@@ -72,7 +76,7 @@ func _move_toward_bezier(destination: Vector2, delta: float, speed: int, control
 	var direction = (bezier_position - position).normalized()
 
 	# Calculate the forward movement
-	var forward_movement = direction * delta * speed
+	var forward_movement = direction * delta * speed * speed_multiplier
 
 	# Update the position
 	position += forward_movement	
@@ -135,3 +139,7 @@ func highlight_typing(part: String):
 	var last_letter: String = part[part.length() - 1]
 	var normal_part: String = unformatted_text.substr(part.length())
 	label.bbcode = bbcode_template % "[green;b]%s[beat]%s[][]%s" % [highlighted_part, last_letter, normal_part]
+	
+func make_inactive() -> void:
+	inactive = true
+	visible = false

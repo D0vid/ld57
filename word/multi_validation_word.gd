@@ -7,6 +7,7 @@ var health: int = 0 : get = _get_health, set = _set_health
 func _ready() -> void:
 	super()
 	health = 3
+	speed_multiplier = 0.5
 
 func decrement_health() -> void:
 	health = health - 1

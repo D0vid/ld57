@@ -9,3 +9,4 @@ func _ready() -> void:
 	tween.tween_property(self, "modulate:a", 1, .1)
 	tween.tween_property(self, "modulate:a", 1, .5)
 	tween.set_loops()
+	speed_multiplier = 0.8

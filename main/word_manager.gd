@@ -49,7 +49,7 @@ var word_list_medium: WordList = WordList.new([
 	WordData.new("HoLLoWeD", WordData.Type.NORMAL),
 	WordData.new("forgotten", WordData.Type.BLINKING),
 	WordData.new("unearthed", WordData.Type.NORMAL),
-	WordData.new("VeIlEd", WordData.Type.NORMAL),
+	WordData.new("VEilEd", WordData.Type.NORMAL),
 	WordData.new("starlight", WordData.Type.BLINKING),
 	WordData.new("fOg", WordData.Type.NORMAL),
 	WordData.new("Yovaaztosh", WordData.Type.NORMAL),
@@ -133,10 +133,10 @@ enum Phase {
 }
 
 var current_phase: Phase : set = _set_current_phase
-var timer_difficulties: Array[float] = [2, 1.9, 1.8]
-var speed_difficulties: Array[int] = [50, 60, 70]
-var medium_insight_treshold: int = 333
-var nightmare_insight_treshold: int = 666
+var timer_difficulties: Array[float] = [1.5, 1.4, 1.3]
+var speed_difficulties: Array[int] = [50, 55, 60]
+var medium_insight_treshold: int = 330
+var nightmare_insight_treshold: int = 660
 
 func _ready() -> void:
 	word_timer.timeout.connect(_on_timeout)
@@ -223,7 +223,7 @@ func _on_word_submitted(text: String) -> void:
 	
 	for i: int in range(0, words.size()):
 		var word: BaseWord = words[i]
-		if word.get_text() == text: # word matches
+		if word.get_text() == text and not word.inactive: # word matches
 			if (word.has_method("decrement_health") and word.health > 1):
 				word.decrement_health()
 				if (word.health == 0):
@@ -242,7 +242,7 @@ func _on_word_submitted(text: String) -> void:
 		words.remove_at(index_to_delete)
 		word.queue_free()
 		
-	if mark_as_delete.is_empty():
+	if mark_as_delete.is_empty() and not text.is_empty():
 		# if no words match
 		player.health -= 10
 
@@ -251,14 +251,19 @@ func _on_area_entered(body: Node2D) -> void:
 		var word: BaseWord = body as BaseWord
 		words.erase(word)
 		word.queue_free()
-		player.health -= 10
+		if not word.inactive:
+			player.health -= 10
 
 func _on_insight_changed(insight: int) -> void:
 	if (current_phase == Phase.EASY and insight >= medium_insight_treshold):
+		for word in words:
+			word.make_inactive()
 		current_phase = Phase.MEDIUM
 		current_word_list = word_list_medium
 		EventBus.phase_changed.emit(current_phase)
 	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
+		for word in words:
+			word.make_inactive()
 		current_phase = Phase.NIGHTMARE
 		current_word_list = word_list_nightmare
 		EventBus.phase_changed.emit(current_phase)
