@@ -8,3 +8,8 @@ func _set_combo_counter(value: int) -> void:
 	if combo_counter > max_combo:
 		max_combo = combo_counter
 	combo_counter = value
+	
+func reset() -> void:
+	total_counter = 0
+	combo_counter = 0
+	max_combo = 0

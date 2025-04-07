@@ -30,6 +30,7 @@ func _ready() -> void:
 	current_phase = Phase.EASY
 	word_spawner = WordSpawner.new(word_factory)
 	AudioPlayer.play_loop1()
+	Stats.reset()
 
 func _physics_process(delta: float) -> void:
 	var new_word = word_spawner.spawn_word(current_phase, delta)
