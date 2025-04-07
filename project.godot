@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://main/event_bus.gd"
+AudioPlayer="*res://audio_player/audio_player.tscn"
 
 [display]
 
@@ -64,5 +65,5 @@ renderer/rendering_method.mobile="gl_compatibility"
 [richer_text_label]
 
 fonts={
-&"zai_OlivettiLettera22Typewriter": "res://fonts/zai_OlivettiLettera22Typewriter.ttf"
+&"MODERN TYPEWRITER": "res://fonts/MODERN TYPEWRITER.ttf"
 }

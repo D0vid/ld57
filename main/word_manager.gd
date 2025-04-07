@@ -28,6 +28,7 @@ func _ready() -> void:
 	player.area_entered.connect(_on_area_entered)
 	current_phase = Phase.EASY
 	word_spawner = WordSpawner.new(word_factory)
+	AudioPlayer.play_loop1()
 
 func _physics_process(delta: float) -> void:
 	var new_word = word_spawner.spawn_word(current_phase, delta)
@@ -109,9 +110,13 @@ func _on_insight_changed(insight: int) -> void:
 		for word in words:
 			word.make_inactive()	
 		current_phase = Phase.MEDIUM
+		AudioPlayer.play_loop2()
+		AudioPlayer.play_bell()
 		EventBus.phase_changed.emit(current_phase)
 	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
 		for word in words:
 			word.make_inactive()
 		current_phase = Phase.NIGHTMARE
+		AudioPlayer.play_loop3()
+		AudioPlayer.play_bell()
 		EventBus.phase_changed.emit(current_phase)
