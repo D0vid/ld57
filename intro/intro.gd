@@ -3,12 +3,14 @@ extends Control
 class_name Intro
 
 var text: Array[String] = [
+						  "Johnny Depths",
+						  "",
 						  "A lonely writer, longing for inspiration",
-						  "Meditating, stimulating their imagination",
+						  "Meditating, stimulating your imagination",
 						  "And lo and behold, it is working",
 						  "As always, the depths of the mind are worth exploring",
 						  "",
-						  "Beware however, the darker places",
+						  "Beware though, the darker places",
 						  "And always stay clear, of strange faces",
 						  "Some words perhaps, are beyond understanding",
 						  "Yet if you persist, you shall finally see the ending",
@@ -30,7 +32,6 @@ func _ready() -> void:
 	process_intro()
 
 func _input(event: InputEvent) -> void:
-	# todo show controls in UI
 	if event.is_action_pressed(&"process_intro"):
 		if (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
 			process_intro()
