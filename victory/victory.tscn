@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d20b3mej0kpup"]
+[gd_scene load_steps=4 format=3 uid="uid://d20b3mej0kpup"]
 
 [ext_resource type="Script" uid="uid://ca0d1dhv1ydjs" path="res://victory/victory.gd" id="1_4kiho"]
+[ext_resource type="Texture2D" uid="uid://da0ad7vf0sins" path="res://game_over/eldritch.png" id="2_2p8vy"]
 [ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="2_t53of"]
 
 [node name="Victory" type="Control"]
@@ -19,28 +20,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.784314)
+color = Color(0, 0, 0, 0.882353)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 0
+offset_left = 598.0
+offset_top = -86.0
+offset_right = 1323.0
+offset_bottom = 910.0
+texture = ExtResource("2_2p8vy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_t53of")
 theme_override_font_sizes/normal_font_size = 32
-text = "Victory
+bbcode_enabled = true
+text = "[color=green][font_size=64]Victory[/font_size][/color]
+
 
 Congratulations
 
+
+You have survived the depths of your mind
+
+
 Thanks for playing !
+
+
+-
+
 
 Press R to play again"
 fit_content = true
