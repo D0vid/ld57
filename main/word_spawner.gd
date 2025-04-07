@@ -29,10 +29,7 @@ func spawn_word(phase: WordManager.Phase, delta_time: float) -> BaseWord:
 		current_spawn_timeout = current_wordlist.spawn_interval
 		var word_data =  current_wordlist.pop()
 		
-		var word_text: String = word_data.text
-		if word_data.is_random:
-			word_text = current_wordlist.get_random_word()
-		
+		var word_text: String = word_data.text		
 		var word_instance: BaseWord
 	   
 		match word_data.type:
