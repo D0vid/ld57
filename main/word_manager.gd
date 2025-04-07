@@ -16,8 +16,8 @@ enum Phase {
 }
 
 var current_phase: Phase : set = _set_current_phase
-var medium_insight_treshold: int = 33
-var nightmare_insight_treshold: int = 66
+var medium_insight_treshold: int = 330
+var nightmare_insight_treshold: int = 660
 var word_spawner: WordSpawner
 var master_speed = 1
 
