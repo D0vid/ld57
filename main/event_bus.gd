@@ -11,3 +11,5 @@ signal insight_changed(insight: int)
 signal start_game_clicked()
 	
 signal phase_changed(phase: WordManager.Phase)
+	
+signal intro_finished()
