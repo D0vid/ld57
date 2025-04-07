@@ -8,7 +8,6 @@ var speed
 var speed_increase_interval
 var speed_increase_amount
 var spawn_interval
-var last_randomly_picked = null
 var consumed_words = 0
  
 func _init(_list_random_word: Array[String], _list: Array[WordData], _spawn_interval: float, _speed: int = 100, _speed_increase_interval: int = 0, _speed_increase_amount: int = 0):
@@ -24,15 +23,14 @@ func is_finished() -> bool:
 
 func pop() -> WordData:
 	consumed_words+=1
-	return list.pop_front()
+	var word: WordData = list.pop_front()
+	if word.is_random:
+		word.text = get_random_word()
+	return word
 
 func get_random_word() -> String:
 	var random = randi_range(0, list_random_words.size() - 1)
-	while(random == last_randomly_picked):
-		random = randi_range(0, list_random_words.size() - 1)
-	
-	last_randomly_picked = random
-	return list_random_words[random]
+	return list_random_words.pop_at(random)
 
 func get_speed_increase_amount() -> float:
 	if speed_increase_interval == 0:
