@@ -8,6 +8,7 @@ var words: Array[BaseWord]  = []
 @export var word_factory: WordFactory
 @export var player: Player
 @export var phase_label: Label
+@export var combo_label: RichTextLabel
 
 enum Phase {
 	EASY,
