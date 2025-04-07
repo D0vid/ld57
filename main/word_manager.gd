@@ -75,6 +75,7 @@ func _on_word_submitted(text: String) -> void:
 		if word.get_text() == text and not word.inactive: # word matches
 			if (word.has_method("decrement_health") and word.health > 1):
 				word.decrement_health()
+				player.health += 10
 				if (word.health == 0):
 					mark_as_delete.push_front(i)
 					player.insight += 10
