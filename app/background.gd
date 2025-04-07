@@ -6,7 +6,6 @@ func _ready() -> void:
 	EventBus.phase_changed.connect(_on_phase_changed)
 
 func _on_phase_changed(phase: WordManager.Phase) -> void:
-	print("BACKGROUND : Phase changed : %s" % WordManager.Phase.keys()[phase])
 	if phase == WordManager.Phase.EASY:
 		transition_to_easy()
 	elif phase == WordManager.Phase.MEDIUM:

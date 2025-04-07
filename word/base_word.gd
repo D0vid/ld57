@@ -68,7 +68,7 @@ func _move_toward_bezier(destination: Vector2, delta: float, speed: int, control
 	var t = 1.0 - (distance_to_destination / position.distance_to(control_point))
 	#t = clamp(t, 0.0, 1.0)
 	
-	scale = lerp(Vector2(2,2), Vector2(1,1), t)
+	scale = lerp(Vector2(1.5,1.5), Vector2(1,1), t)
 
 	# Calculate the position on the Bezier curve using the parametric equations
 	var bezier_position = Vector2(

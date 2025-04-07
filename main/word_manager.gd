@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		word.move_toward(player.position, delta, master_speed * word_spawner.current_wordlist.speed + speed_increase)
 
 func _set_current_phase(value: Phase) -> void:
-	print("WORD_MANAGER: Phase changed : %s" % WordManager.Phase.keys()[value])
 	current_phase = value
 	phase_label.text = Phase.keys()[current_phase]
 	EventBus.phase_changed.emit(value)

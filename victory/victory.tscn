@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d20b3mej0kpup"]
+[gd_scene load_steps=3 format=3 uid="uid://d20b3mej0kpup"]
 
 [ext_resource type="Script" uid="uid://ca0d1dhv1ydjs" path="res://victory/victory.gd" id="1_4kiho"]
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="2_t53of"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -18,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.501961)
+color = Color(0, 0, 0, 0.784314)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -33,6 +34,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_t53of")
 theme_override_font_sizes/normal_font_size = 32
 text = "Victory
 

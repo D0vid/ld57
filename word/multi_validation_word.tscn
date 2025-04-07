@@ -39,7 +39,6 @@ offset_bottom = 40.0
 
 [node name="RicherTextLabel" parent="HBoxContainer" instance=ExtResource("2_jos5i")]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_kp2q8")
 theme_override_fonts/italics_font = SubResource("FontVariation_v5xoq")
 theme_override_fonts/bold_italics_font = SubResource("FontVariation_midtd")
 theme_override_fonts/bold_font = SubResource("FontVariation_wdefw")
