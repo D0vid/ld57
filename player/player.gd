@@ -18,6 +18,8 @@ func _get_health() -> int:
 func _set_health(value: int) -> void:
 	health = value
 	EventBus.health_changed.emit(health)
+	if health <= 0:
+		EventBus.game_over.emit()
 
 func _get_insight() -> int:
 	return insight
@@ -25,3 +27,5 @@ func _get_insight() -> int:
 func _set_insight(value: int) -> void:
 	insight = value
 	EventBus.insight_changed.emit(insight)
+	if insight >= 10:
+		EventBus.victory.emit()

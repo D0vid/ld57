@@ -13,3 +13,9 @@ signal start_game_clicked()
 signal phase_changed(phase: WordManager.Phase)
 	
 signal intro_finished()
+	
+signal retry_requested()
+	
+signal game_over()
+	
+signal victory()

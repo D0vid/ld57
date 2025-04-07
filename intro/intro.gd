@@ -40,9 +40,14 @@ func _ready() -> void:
 	process_intro()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_accept") and (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
+	# todo show controls in UI
+	if event.is_action_pressed(&"process_intro") and (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
 		process_intro()
-	if event.is_action_pressed(&"ui_cancel"):
+	if event.is_action_pressed(&"skip_intro"):
+		if typing_tween:
+			typing_tween.pause()
+		if fading_tween:
+			fading_tween.pause()
 		EventBus.intro_finished.emit()
 
 func process_intro() -> void:
