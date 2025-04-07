@@ -27,5 +27,5 @@ func _get_insight() -> int:
 func _set_insight(value: int) -> void:
 	insight = value
 	EventBus.insight_changed.emit(insight)
-	if insight >= 10:
+	if insight >= 1000:
 		EventBus.victory.emit()
