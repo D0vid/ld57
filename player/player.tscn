@@ -71,7 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6b1q3y58me6" path="res://player/typingright/typingright0005.png" id="65_7l6ig"]
 [ext_resource type="Texture2D" uid="uid://c160imivh1evd" path="res://player/typingleft/AnimTypingLeft0004.png" id="65_8rogd"]
 [ext_resource type="Texture2D" uid="uid://cnkme6w3rj744" path="res://player/typingleft/AnimTypingLeft0005.png" id="66_48p26"]
-[ext_resource type="Script" path="res://player/PlayerAnimator.gd" id="67_hggc2"]
+[ext_resource type="Script" uid="uid://7o4lbrkcn4wm" path="res://player/PlayerAnimator.gd" id="67_hggc2"]
 [ext_resource type="Texture2D" uid="uid://ckv132w1h8tk5" path="res://player/typewriter/Typewritter0001.png" id="73_do7qw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwkvk"]
