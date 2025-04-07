@@ -22,9 +22,8 @@ script = ExtResource("1_53q0u")
 [node name="Player" parent="." instance=ExtResource("2_pjrb6")]
 position = Vector2(960, 540)
 
-[node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "word_factory", "player", "phase_label")]
+[node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_factory", "player", "phase_label")]
 script = ExtResource("5_3wy1v")
-word_timer = NodePath("../WordTimer")
 word_factory = NodePath("../WordFactory")
 player = NodePath("../Player")
 phase_label = NodePath("PhaseLabel")

@@ -30,6 +30,8 @@ func _ready() -> void:
 		bezier_control = 1000
 	else:
 		bezier_control = -1000
+	scale = Vector2(2,2)
+	
 	
 func _process(_delta: float) -> void:
 	pass
@@ -65,6 +67,8 @@ func _move_toward_bezier(destination: Vector2, delta: float, speed: int, control
 	var distance_to_destination = position.distance_to(destination)
 	var t = 1.0 - (distance_to_destination / position.distance_to(control_point))
 	t = clamp(t, 0.0, 1.0)
+	
+	scale = lerp(Vector2(2,2), Vector2(1,1), t)
 
 	# Calculate the position on the Bezier curve using the parametric equations
 	var bezier_position = Vector2(
@@ -125,20 +129,20 @@ func higlight_error(input: String):
 		var normal_part: String = unformatted_text.substr(input.length())
 		print('normal_part: %s' % normal_part)
 
-		label.bbcode = bbcode_template % "[green;b]%s[][red;b]%s[letterswap char=%s]%s[][]%s" % [highlighted_part, previous_bad_input , valid_last_letter, invalid_last_letter, normal_part]
+		label.bbcode = bbcode_template % "[green]%s[][red]%s[letterswap char=%s]%s[][]%s" % [highlighted_part, previous_bad_input , valid_last_letter, invalid_last_letter, normal_part]
 	else:
 		var remaining_input: String = unformatted_text.trim_prefix(submitted_valid_input)
 		if remaining_input.is_empty():
-			label.bbcode =  bbcode_template % "[red;b]%s[]" % highlighted_part
+			label.bbcode =  bbcode_template % "[red]%s[]" % highlighted_part
 		else:
-			label.bbcode =  bbcode_template % "[green;b]%s[red;b]%s[]" % [highlighted_part, remaining_input]
+			label.bbcode =  bbcode_template % "[green]%s[red]%s[]" % [highlighted_part, remaining_input]
 
 		
 func highlight_typing(part: String):
 	var highlighted_part: String = part.substr(0, part.length() - 1)
 	var last_letter: String = part[part.length() - 1]
 	var normal_part: String = unformatted_text.substr(part.length())
-	label.bbcode = bbcode_template % "[green;b]%s[beat]%s[][]%s" % [highlighted_part, last_letter, normal_part]
+	label.bbcode = bbcode_template % "[green]%s[beat]%s[][]%s" % [highlighted_part, last_letter, normal_part]
 	
 func make_inactive() -> void:
 	inactive = true

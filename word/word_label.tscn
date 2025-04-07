@@ -1,31 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7m0mbmcepiim"]
+[gd_scene load_steps=4 format=3 uid="uid://b7m0mbmcepiim"]
 
 [ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="1_7a41g"]
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="1_hhhks"]
+
+[sub_resource type="Theme" id="Theme_nlfmc"]
+default_font = ExtResource("1_hhhks")
 
 [node name="RicherTextLabel" type="RichTextLabel"]
 clip_contents = false
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 41)
 offset_right = 150.0
 offset_bottom = 51.0
-theme_override_colors/font_outline_color = Color(0.5, 0.5, 0.5, 1)
+theme = SubResource("Theme_nlfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/mono_font_size = 36
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("1_7a41g")
-bbcode = "[red;b]3[]"
+bbcode = "3"
 effects = 2
 alignment = 1
-color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
 emoji_scale = 1.0
-font = ""
-font_auto_setup = true
-font_size = 32
+font = "MODERN TYPEWRITER"
+font_auto_setup = false
+font_size = 36
 font_bold_weight = 1.5
 font_italics_slant = 0.25
 font_italics_weight = -0.25

@@ -15,7 +15,7 @@ func _process_custom_fx(c: CharFXTransform) -> bool:
 	c.transform *= Transform2D.IDENTITY.scaled(Vector2.ONE + Vector2(1.4, 0.8) * pulse)
 	c.transform *= Transform2D.IDENTITY.translated(-cs)
 
-	var target_char: String = str(c.env.get("char", "x"))
+	var target_char: String = str(c.env.get("char", " "))
 	
 
 	if c.elapsed_time > .2:

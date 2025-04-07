@@ -1,11 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4oitaisaf00d"]
+[gd_scene load_steps=8 format=3 uid="uid://c4oitaisaf00d"]
 
 [ext_resource type="Script" uid="uid://bbmnd8pwcyjug" path="res://word/normal_word.gd" id="1_hqwqq"]
-[ext_resource type="PackedScene" uid="uid://b7m0mbmcepiim" path="res://word/word_label.tscn" id="2_hqwqq"]
+[ext_resource type="PackedScene" uid="uid://b7m0mbmcepiim" path="res://word/word_label.tscn" id="2_efkxa"]
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="3_efkxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqwqq"]
 resource_local_to_scene = true
 size = Vector2(153, 48.5)
+
+[sub_resource type="FontVariation" id="FontVariation_efkxa"]
+base_font = ExtResource("3_efkxa")
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_0bif5"]
+base_font = ExtResource("3_efkxa")
+variation_embolden = 1.5
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_vbl5p"]
+base_font = ExtResource("3_efkxa")
+variation_embolden = 1.5
 
 [node name="NormalWord" type="Area2D" node_paths=PackedStringArray("label", "collision_shape")]
 script = ExtResource("1_hqwqq")
@@ -16,4 +31,10 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(76.5, 25)
 shape = SubResource("RectangleShape2D_hqwqq")
 
-[node name="RicherTextLabel" parent="." instance=ExtResource("2_hqwqq")]
+[node name="RicherTextLabel" parent="." instance=ExtResource("2_efkxa")]
+theme_override_fonts/normal_font = ExtResource("3_efkxa")
+theme_override_fonts/italics_font = SubResource("FontVariation_efkxa")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_0bif5")
+theme_override_fonts/bold_font = SubResource("FontVariation_vbl5p")
+outline_size = 0
+outline_adjust = 0.8

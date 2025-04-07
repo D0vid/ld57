@@ -43,4 +43,6 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 [richer_text_label]
 
-fonts={}
+fonts={
+&"zai_OlivettiLettera22Typewriter": "res://fonts/zai_OlivettiLettera22Typewriter.ttf"
+}
