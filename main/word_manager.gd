@@ -41,10 +41,10 @@ var word_list_easy: WordList = WordList.new([
 var word_list_medium: WordList = WordList.new([
 	WordData.new("hollow", WordData.Type.NORMAL),
 	WordData.new("veil", WordData.Type.NORMAL),
-	WordData.new("siLK", WordData.Type.BLINKING),
-	WordData.new("mUrMuR", WordData.Type.NORMAL),
+	WordData.new("silk", WordData.Type.BLINKING),
+	WordData.new("murmur", WordData.Type.NORMAL),
 	WordData.new("unseen", WordData.Type.BLINKING),
-	WordData.new("mUrK", WordData.Type.NORMAL),
+	WordData.new("murk", WordData.Type.NORMAL),
 	WordData.new("Ucxudhrutl", WordData.Type.NORMAL),
 	WordData.new("HoLLoWeD", WordData.Type.NORMAL),
 	WordData.new("forgotten", WordData.Type.BLINKING),
@@ -81,7 +81,7 @@ var word_list_nightmare: WordList = WordList.new([
 	WordData.new("mournful", WordData.Type.BLINKING),
 	WordData.new("hElp mE", WordData.Type.NORMAL),
 	WordData.new("requiem", WordData.Type.BLINKING),
-	WordData.new("Iughrotl'Thuth", WordData.Type.NORMAL),
+	WordData.new("Zughrotl'Thuth", WordData.Type.NORMAL),
 	WordData.new("shattered", WordData.Type.BLINKING),
 	WordData.new("HELP ME", WordData.Type.NORMAL),
 	WordData.new("phantom", WordData.Type.BLINKING),
@@ -108,7 +108,7 @@ var word_list_nightmare: WordList = WordList.new([
 	WordData.new("frenzied", WordData.Type.BLINKING),
 	WordData.new("unfathomable", WordData.Type.BLINKING),
 	WordData.new("abominable", WordData.Type.BLINKING),
-	WordData.new("Iaucthaar'Xa", WordData.Type.NORMAL),
+	WordData.new("Laucthaar'Xa", WordData.Type.NORMAL),
 	WordData.new("foulness", WordData.Type.BLINKING),
 	WordData.new("eldritch", WordData.Type.BLINKING),
 	WordData.new("netherworld", WordData.Type.BLINKING),
@@ -185,15 +185,12 @@ func spawn_word() -> void:
 func get_random_spawn_point() -> Vector2:
 	var max_x = DisplayServer.screen_get_size().x
 	var max_y = DisplayServer.screen_get_size().y
-	var random_side: int = randi_range(0, 3)
-	var random_x: int = randi_range(0, max_x)
+	var random_side: int = randi_range(0, 1)
 	var random_y: int = randi_range(0, max_y)
 	
 	match random_side:
-		0: return Vector2(random_x, 0) # up
-		1: return Vector2(max_x, random_y) # right
-		2: return Vector2(random_x, max_y) # down
-		3: return Vector2(0, random_y) # left
+		0: return Vector2(max_x, random_y) # right
+		1: return Vector2(0, random_y) # left
 		_: return Vector2.ZERO
 	
 func _on_letter_typed(text: String) -> void:
