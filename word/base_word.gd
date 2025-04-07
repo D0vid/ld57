@@ -30,7 +30,7 @@ func _ready() -> void:
 		bezier_control = 1000
 	else:
 		bezier_control = -1000
-	scale = Vector2(2,2)
+	#scale = Vector2(2,2)
 	
 	
 func _process(_delta: float) -> void:
@@ -66,7 +66,7 @@ func _move_toward_bezier(destination: Vector2, delta: float, speed: int, control
 	# Calculate the current parameter t based on the distance to the destination
 	var distance_to_destination = position.distance_to(destination)
 	var t = 1.0 - (distance_to_destination / position.distance_to(control_point))
-	t = clamp(t, 0.0, 1.0)
+	#t = clamp(t, 0.0, 1.0)
 	
 	scale = lerp(Vector2(2,2), Vector2(1,1), t)
 
