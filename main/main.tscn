@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=16 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
-[ext_resource type="Script" uid="uid://bluepdtgpqy5d" path="res://player/player.gd" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4oitaisaf00d" path="res://word/normal_word.tscn" id="4_3wy1v"]
 [ext_resource type="Script" uid="uid://juxawvtlnhfp" path="res://main/word_manager.gd" id="5_3wy1v"]
 [ext_resource type="Script" uid="uid://qasydljb8rv5" path="res://word/word_factory.gd" id="5_fwcvl"]
@@ -22,7 +21,6 @@ script = ExtResource("1_53q0u")
 
 [node name="Player" parent="." instance=ExtResource("2_pjrb6")]
 position = Vector2(960, 540)
-script = ExtResource("3_c651c")
 
 [node name="WordManager" type="Node2D" parent="." node_paths=PackedStringArray("word_timer", "word_factory", "player", "phase_label")]
 script = ExtResource("5_3wy1v")
