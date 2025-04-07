@@ -1,8 +1,10 @@
-[gd_scene format=3 uid="uid://brepa5lo5nclb"]
+[gd_scene load_steps=2 format=3 uid="uid://brepa5lo5nclb"]
+
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="1_wp7kv"]
 
 [node name="Label" type="RichTextLabel"]
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_wp7kv")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "azfazfzfazfazf

@@ -35,5 +35,3 @@ shape = SubResource("RectangleShape2D_voj0w")
 theme_override_fonts/italics_font = SubResource("FontVariation_h38my")
 theme_override_fonts/bold_italics_font = SubResource("FontVariation_ii105")
 theme_override_fonts/bold_font = SubResource("FontVariation_g58oo")
-outline_size = 0
-outline_adjust = 0.8

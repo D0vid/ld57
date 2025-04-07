@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmcuq2tgjeopk"]
 
-[ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="1_jkt4n"]
 [ext_resource type="Script" uid="uid://bkyjixentd0vf" path="res://intro/intro.gd" id="1_vjsr4"]
 [ext_resource type="PackedScene" uid="uid://brepa5lo5nclb" path="res://intro/intro_label.tscn" id="2_pxqmo"]
-[ext_resource type="Script" uid="uid://d1jojd34787kl" path="res://main/background.gd" id="2_vjsr4"]
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="3_pxqmo"]
+[ext_resource type="Script" uid="uid://dl3mf6bliwoec" path="res://intro/intro_controls_label.gd" id="3_vjsr4"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("label_container")]
 layout_mode = 3
@@ -13,33 +13,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vjsr4")
-label_container = NodePath("VBoxContainer")
+label_container = NodePath("MarginContainer/VBoxContainer")
 intro_label_scene = ExtResource("2_pxqmo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="BGLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="Background" type="ColorRect" parent="BGLayer"]
-material = ExtResource("1_jkt4n")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.921569, 0.929412, 0.913725, 1)
-script = ExtResource("2_vjsr4")
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-visible_characters = 5
+[node name="IntroControlsLabel2" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_pxqmo")
+theme_override_font_sizes/normal_font_size = 32
+text = "Skip Intro ⏩ : Escape "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_vjsr4")

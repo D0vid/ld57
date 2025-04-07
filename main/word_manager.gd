@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 func _set_current_phase(value: Phase) -> void:
 	current_phase = value
 	phase_label.text = Phase.keys()[current_phase]
+	EventBus.phase_changed.emit(value)
 
 func _on_letter_typed(text: String) -> void:
 	var partial_matching_words: Array[BaseWord] = []

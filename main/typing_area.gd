@@ -13,5 +13,5 @@ func _on_text_submitted(new_text: String) -> void:
 func _on_text_changed(new_text: String) -> void:
 	EventBus.letter_typed.emit(new_text.json_escape())
 
-func _on_phase_changed() -> void:
+func _on_phase_changed(_phase: WordManager.Phase) -> void:
 	text = ""

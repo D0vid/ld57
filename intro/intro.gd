@@ -3,30 +3,23 @@ extends Control
 class_name Intro
 
 var text: Array[String] = [
-						  "In a dreamy realm, with thoughts flowing",
-						  "Lies a blank page, silent and mocking",
-						  "White as snow, it stares back",
-						  "In emptiness, for inspiration you lack",
+						  "Johnny Depths",
 						  "",
-						  "The cursor blinks, a steady beat,",
-						  "Yet admitting defeat, the words retreat.",
-						  "Ideas flutter, like ghosts in the night,",
-						  "Elusive, fleeting, out of sight.",
+						  "A lonely writer, longing for inspiration",
+						  "Meditating, stimulating your imagination",
+						  "And lo and behold, it is working",
+						  "As always, the depths of the mind are worth exploring",
 						  "",
-						  "Fear of failure, of not being right",
-						  "Keeps the words locked in the night.",
-						  "Perfection's shadow, a looming figure",
-						  "Stifles the voice, makes the heart shiver",
-						  "",
-						  "But remember, dear writer, this is true,",
-						  "The blank page is a friend, not a foe",
-						  "It's a space for dreams, for thoughts to take flight,",
-						  "A playground for words, in the soft moonlight.",
-						  "",
-						  "Beware however, the darker places",
+						  "Beware though, the darker places",
 						  "And always stay clear, of strange faces",
 						  "Some words perhaps, are beyond understanding",
-						  "Yet if you persist, you shall perhaps see the ending"
+						  "Yet if you persist, you shall finally see the ending",
+						  "",
+						  "Insight is ever a poisonous gift",
+						  "One one hand, the veil of the arcane, it can lift",
+						  "On the other, monsters that lurk in the depths, it can invite",
+						  "Devouring reason and sanity, in the darkness of the night",
+						  "",
 						  ]
 
 @export var label_container: VBoxContainer
@@ -36,13 +29,12 @@ var typing_tween: Tween
 var fading_tween: Tween
 
 func _ready() -> void:
-	print('start intro')
 	process_intro()
 
 func _input(event: InputEvent) -> void:
-	# todo show controls in UI
-	if event.is_action_pressed(&"process_intro") and (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
-		process_intro()
+	if event.is_action_pressed(&"process_intro"):
+		if (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
+			process_intro()
 	if event.is_action_pressed(&"skip_intro"):
 		if typing_tween:
 			typing_tween.pause()
