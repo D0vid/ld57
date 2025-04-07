@@ -111,23 +111,17 @@ func submit_input(input: String) -> WordStateEnum:
 
 func higlight_error(input: String):
 	var highlighted_part: String = submitted_valid_input
-	print('highlighted_part: %s' % highlighted_part)
 
 	var invalid_input: String = input.trim_prefix(submitted_valid_input)
-	print('invalid_input: %s' % invalid_input)
 	if input.length() <= unformatted_text.length():
 
 		#We typed less than the word
 		var valid_last_letter: String = unformatted_text[input.length() - 1]
-		print('valid_last_letter: %s' % valid_last_letter)
 		var invalid_last_letter: String = invalid_input[invalid_input.length() - 1]
-		print('invalid_last_letter: %s' % invalid_last_letter)
 
 		var previous_bad_input: String = unformatted_text.substr(submitted_valid_input.length(), invalid_input.length() -1)
-		print('previous_bad_input: %s' % previous_bad_input)
 
 		var normal_part: String = unformatted_text.substr(input.length())
-		print('normal_part: %s' % normal_part)
 
 		label.bbcode = bbcode_template % "[green]%s[][red]%s[letterswap char=%s]%s[][]%s" % [highlighted_part, previous_bad_input , valid_last_letter, invalid_last_letter, normal_part]
 	else:

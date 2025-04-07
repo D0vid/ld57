@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="1_jkt4n"]
 [ext_resource type="Script" uid="uid://bkyjixentd0vf" path="res://intro/intro.gd" id="1_vjsr4"]
 [ext_resource type="PackedScene" uid="uid://brepa5lo5nclb" path="res://intro/intro_label.tscn" id="2_pxqmo"]
-[ext_resource type="Script" uid="uid://d1jojd34787kl" path="res://main/background.gd" id="2_vjsr4"]
+[ext_resource type="Script" uid="uid://d1jojd34787kl" path="res://app/background.gd" id="2_vjsr4"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("label_container")]
 layout_mode = 3

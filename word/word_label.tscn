@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7m0mbmcepiim"]
+[gd_scene load_steps=7 format=3 uid="uid://b7m0mbmcepiim"]
 
 [ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="1_7a41g"]
 [ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="1_hhhks"]
 
 [sub_resource type="Theme" id="Theme_nlfmc"]
 default_font = ExtResource("1_hhhks")
+
+[sub_resource type="FontVariation" id="FontVariation_nlfmc"]
+base_font = ExtResource("1_hhhks")
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_hhhks"]
+base_font = ExtResource("1_hhhks")
+variation_embolden = 1.5
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_bncfx"]
+base_font = ExtResource("1_hhhks")
+variation_embolden = 1.5
 
 [node name="RicherTextLabel" type="RichTextLabel"]
 clip_contents = false
@@ -15,6 +29,10 @@ theme = SubResource("Theme_nlfmc")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("1_hhhks")
+theme_override_fonts/italics_font = SubResource("FontVariation_nlfmc")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_hhhks")
+theme_override_fonts/bold_font = SubResource("FontVariation_bncfx")
 theme_override_font_sizes/bold_italics_font_size = 36
 theme_override_font_sizes/italics_font_size = 36
 theme_override_font_sizes/mono_font_size = 36

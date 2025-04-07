@@ -16,8 +16,8 @@ enum Phase {
 }
 
 var current_phase: Phase : set = _set_current_phase
-var medium_insight_treshold: int = 330
-var nightmare_insight_treshold: int = 660
+var medium_insight_treshold: int = 33
+var nightmare_insight_treshold: int = 66
 var word_spawner: WordSpawner
 var master_speed = 1
 
@@ -42,8 +42,10 @@ func _physics_process(delta: float) -> void:
 		word.move_toward(player.position, delta, master_speed * word_spawner.current_wordlist.speed + speed_increase)
 
 func _set_current_phase(value: Phase) -> void:
+	print("WORD_MANAGER: Phase changed : %s" % WordManager.Phase.keys()[value])
 	current_phase = value
 	phase_label.text = Phase.keys()[current_phase]
+	EventBus.phase_changed.emit(value)
 
 func _on_letter_typed(text: String) -> void:
 	var partial_matching_words: Array[BaseWord] = []
@@ -109,9 +111,7 @@ func _on_insight_changed(insight: int) -> void:
 		for word in words:
 			word.make_inactive()	
 		current_phase = Phase.MEDIUM
-		EventBus.phase_changed.emit(current_phase)
 	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
 		for word in words:
 			word.make_inactive()
 		current_phase = Phase.NIGHTMARE
-		EventBus.phase_changed.emit(current_phase)

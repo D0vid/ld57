@@ -64,5 +64,5 @@ renderer/rendering_method.mobile="gl_compatibility"
 [richer_text_label]
 
 fonts={
-&"zai_OlivettiLettera22Typewriter": "res://fonts/zai_OlivettiLettera22Typewriter.ttf"
+&"MODERN TYPEWRITER": "res://fonts/MODERN TYPEWRITER.ttf"
 }

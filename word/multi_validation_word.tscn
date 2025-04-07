@@ -1,12 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://qrk42rk8fkbv"]
+[gd_scene load_steps=9 format=3 uid="uid://qrk42rk8fkbv"]
 
 [ext_resource type="Script" uid="uid://bhshb084itso3" path="res://word/multi_validation_word.gd" id="1_pj8oy"]
 [ext_resource type="PackedScene" uid="uid://b7m0mbmcepiim" path="res://word/word_label.tscn" id="2_jos5i"]
 [ext_resource type="Texture2D" uid="uid://dcorf6pvmvfeb" path="res://word/validations_2.png" id="3_jos5i"]
+[ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="3_kp2q8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voj0w"]
 resource_local_to_scene = true
 size = Vector2(153, 50)
+
+[sub_resource type="FontVariation" id="FontVariation_v5xoq"]
+base_font = ExtResource("3_kp2q8")
+variation_embolden = -0.25
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_midtd"]
+base_font = ExtResource("3_kp2q8")
+variation_embolden = 1.5
+variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_wdefw"]
+base_font = ExtResource("3_kp2q8")
+variation_embolden = 1.5
 
 [node name="MultiValidationWord" type="Area2D" node_paths=PackedStringArray("progress_bar", "label", "collision_shape")]
 script = ExtResource("1_pj8oy")
@@ -24,6 +39,10 @@ offset_bottom = 40.0
 
 [node name="RicherTextLabel" parent="HBoxContainer" instance=ExtResource("2_jos5i")]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_kp2q8")
+theme_override_fonts/italics_font = SubResource("FontVariation_v5xoq")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_midtd")
+theme_override_fonts/bold_font = SubResource("FontVariation_wdefw")
 
 [node name="Validations" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2

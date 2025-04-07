@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbv72k23xyopl"]
+[gd_scene load_steps=2 format=3 uid="uid://bbv72k23xyopl"]
 
 [ext_resource type="Script" uid="uid://0rnc7p7qpi6y" path="res://main_menu/main_menu.gd" id="1_oa53l"]
-[ext_resource type="Material" uid="uid://be22117cd80h6" path="res://main/superwave_material.tres" id="2_d3a7t"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("start_game_btn")]
 layout_mode = 3
@@ -45,26 +44,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 48
 text = "Start game"
-
-[node name="BGLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="BG" type="Control" parent="BGLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="BGLayer/BG"]
-material = ExtResource("2_d3a7t")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.921569, 0.929412, 0.913725, 1)
