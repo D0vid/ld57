@@ -40,8 +40,10 @@ func _ready() -> void:
 	process_intro()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_accept"):
+	if event.is_action_pressed(&"ui_accept") and (!typing_tween or !typing_tween.is_valid()) and (!fading_tween or !fading_tween.is_valid()):
 		process_intro()
+	if event.is_action_pressed(&"ui_cancel"):
+		EventBus.intro_finished.emit()
 
 func process_intro() -> void:
 	if text.is_empty():
