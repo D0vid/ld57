@@ -9,3 +9,5 @@ signal health_changed(health: int)
 signal insight_changed(insight: int)
 	
 signal start_game_clicked()
+	
+signal phase_changed(phase: WordManager.Phase)

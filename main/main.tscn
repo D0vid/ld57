@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfiath6ygegue"]
+[gd_scene load_steps=17 format=3 uid="uid://cfiath6ygegue"]
 
 [ext_resource type="Script" uid="uid://c86oeweivimpy" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://c6hjstc5iebpx" path="res://player/player.tscn" id="2_pjrb6"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://qrk42rk8fkbv" path="res://word/multi_validation_word.tscn" id="7_fwcvl"]
 [ext_resource type="Script" uid="uid://du25iy8k3sc1g" path="res://hud/insight_label.gd" id="7_grrlh"]
 [ext_resource type="Texture2D" uid="uid://c6tc513lg6iwx" path="res://main/hud.png" id="10_na0o7"]
+[ext_resource type="Script" uid="uid://d1jojd34787kl" path="res://main/background.gd" id="14_n3o0a"]
+[ext_resource type="Material" uid="uid://d1dkwl8lwid67" path="res://main/superwave_material2.tres" id="15_s758e"]
+[ext_resource type="Material" uid="uid://djgxsri1ib2s6" path="res://main/superwave_material3.tres" id="16_4hmqs"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_53q0u")
@@ -125,20 +128,34 @@ script = ExtResource("6_kfbq2")
 [node name="BGLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="BG" type="Control" parent="BGLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="BGLayer/BG"]
+[node name="Background" type="ColorRect" parent="BGLayer"]
 material = ExtResource("6_fwcvl")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.921569, 0.929412, 0.913725, 1)
+script = ExtResource("14_n3o0a")
+
+[node name="Background2" type="ColorRect" parent="BGLayer"]
+visible = false
+material = ExtResource("15_s758e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.921569, 0.929412, 0.913725, 1)
+script = ExtResource("14_n3o0a")
+
+[node name="Background3" type="ColorRect" parent="BGLayer"]
+visible = false
+material = ExtResource("16_4hmqs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.921569, 0.929412, 0.913725, 1)
+script = ExtResource("14_n3o0a")

@@ -1,10 +1,124 @@
 extends Node2D
 
-var word_list: WordList = WordList.new([
-#	WordData.new("test", WordData.Type.NORMAL, 50),
-	WordData.new("test1", WordData.Type.NORMAL, 50),
-#	WordData.new("test3", WordData.Type.NORMAL, 50),
+class_name WordManager
+
+var word_list_easy: WordList = WordList.new([
+	WordData.new("butterfly", WordData.Type.NORMAL),
+	WordData.new("meadow", WordData.Type.NORMAL),
+	WordData.new("sunlight", WordData.Type.NORMAL),
+	WordData.new("lullaby", WordData.Type.NORMAL),
+	WordData.new("dream", WordData.Type.BLINKING),
+	WordData.new("cloud", WordData.Type.NORMAL),
+	WordData.new("rainbow", WordData.Type.NORMAL),
+	WordData.new("forest", WordData.Type.NORMAL),
+	WordData.new("star", WordData.Type.NORMAL),
+	WordData.new("whispers", WordData.Type.NORMAL),
+	WordData.new("soft", WordData.Type.BLINKING),
+	WordData.new("breeze", WordData.Type.BLINKING),
+	WordData.new("glimmer", WordData.Type.BLINKING),
+	WordData.new("petal", WordData.Type.BLINKING),
+	WordData.new("echo", WordData.Type.MULTI_VALIDATION),
+	WordData.new("dew", WordData.Type.NORMAL),
+	WordData.new("fawn", WordData.Type.NORMAL),
+	WordData.new("moonlight", WordData.Type.NORMAL),
+	WordData.new("bloom", WordData.Type.NORMAL),
+	WordData.new("sleep", WordData.Type.BLINKING),
+	WordData.new("wind", WordData.Type.NORMAL),
+	WordData.new("laughter", WordData.Type.NORMAL),
+	WordData.new("crystal", WordData.Type.NORMAL),
+	WordData.new("lantern", WordData.Type.NORMAL),
+	WordData.new("drift", WordData.Type.BLINKING),
+	WordData.new("heart", WordData.Type.NORMAL),
+	WordData.new("mist", WordData.Type.BLINKING),
+	WordData.new("twilight", WordData.Type.BLINKING),
+	WordData.new("wander", WordData.Type.NORMAL),
+	WordData.new("reflection", WordData.Type.BLINKING),
+	WordData.new("whimsy", WordData.Type.NORMAL),
+	WordData.new("glow", WordData.Type.BLINKING),
+	WordData.new("???", WordData.Type.MULTI_VALIDATION),
 ])
+
+var word_list_medium: WordList = WordList.new([
+	WordData.new("hollow", WordData.Type.NORMAL),
+	WordData.new("veil", WordData.Type.NORMAL),
+	WordData.new("siLK", WordData.Type.BLINKING),
+	WordData.new("mUrMuR", WordData.Type.NORMAL),
+	WordData.new("unseen", WordData.Type.BLINKING),
+	WordData.new("mUrK", WordData.Type.NORMAL),
+	WordData.new("Ucxudhrutl", WordData.Type.NORMAL),
+	WordData.new("HoLLoWeD", WordData.Type.NORMAL),
+	WordData.new("forgotten", WordData.Type.BLINKING),
+	WordData.new("unearthed", WordData.Type.NORMAL),
+	WordData.new("VeIlEd", WordData.Type.NORMAL),
+	WordData.new("starlight", WordData.Type.BLINKING),
+	WordData.new("fOg", WordData.Type.NORMAL),
+	WordData.new("Yovaaztosh", WordData.Type.NORMAL),
+	WordData.new("SHIVER", WordData.Type.BLINKING),
+	WordData.new("abyss", WordData.Type.NORMAL),
+	WordData.new("eerie", WordData.Type.NORMAL),
+	WordData.new("fathom", WordData.Type.NORMAL),
+	WordData.new("nightshade", WordData.Type.BLINKING),
+	WordData.new("oc'thaatloh", WordData.Type.NORMAL),
+	WordData.new("pulse", WordData.Type.NORMAL),
+	WordData.new("EnIgMa", WordData.Type.NORMAL),
+	WordData.new("wraith", WordData.Type.BLINKING),
+	WordData.new("yid'ognnig", WordData.Type.NORMAL),
+	WordData.new("ObScUrE", WordData.Type.NORMAL),
+	WordData.new("blackened", WordData.Type.NORMAL),
+	WordData.new("cxothalbh", WordData.Type.BLINKING),
+	WordData.new("unravel", WordData.Type.NORMAL),
+	WordData.new("cryptic", WordData.Type.NORMAL),
+	WordData.new("unholy", WordData.Type.BLINKING),
+	WordData.new("yoc'thaggiss", WordData.Type.NORMAL),
+	WordData.new("dread", WordData.Type.NORMAL),
+	WordData.new("ABOMINATION", WordData.Type.MULTI_VALIDATION)
+])
+
+var word_list_nightmare: WordList = WordList.new([
+	WordData.new("help me", WordData.Type.MULTI_VALIDATION, 2),
+	WordData.new("grief", WordData.Type.BLINKING),
+	WordData.new("searing", WordData.Type.BLINKING),
+	WordData.new("mournful", WordData.Type.BLINKING),
+	WordData.new("hElp mE", WordData.Type.NORMAL),
+	WordData.new("requiem", WordData.Type.BLINKING),
+	WordData.new("Iughrotl'Thuth", WordData.Type.NORMAL),
+	WordData.new("shattered", WordData.Type.BLINKING),
+	WordData.new("HELP ME", WordData.Type.NORMAL),
+	WordData.new("phantom", WordData.Type.BLINKING),
+	WordData.new("blight", WordData.Type.BLINKING),
+	WordData.new("Aic'Thygh'Vhis", WordData.Type.NORMAL),
+	WordData.new("ruin", WordData.Type.BLINKING),
+	WordData.new("nightmarish", WordData.Type.BLINKING),
+	WordData.new("malevolent", WordData.Type.BLINKING),
+	WordData.new("rot", WordData.Type.BLINKING),
+	WordData.new("help...", WordData.Type.NORMAL),
+	WordData.new("Aighraadhrux", WordData.Type.BLINKING),
+	WordData.new("abyssal", WordData.Type.BLINKING),
+	WordData.new("sorrows", WordData.Type.BLINKING),
+	WordData.new("help me ... please", WordData.Type.NORMAL),
+	WordData.new("writhing", WordData.Type.BLINKING),
+	WordData.new("madness", WordData.Type.BLINKING),
+	WordData.new("cursed", WordData.Type.BLINKING),
+	WordData.new("Ctuignn'Gnu", WordData.Type.NORMAL),
+	WordData.new("eldritch", WordData.Type.BLINKING),
+	WordData.new("unseen", WordData.Type.BLINKING),
+	WordData.new("void", WordData.Type.BLINKING),
+	WordData.new("tainted", WordData.Type.NORMAL),
+	WordData.new("disembodied", WordData.Type.BLINKING),
+	WordData.new("frenzied", WordData.Type.BLINKING),
+	WordData.new("unfathomable", WordData.Type.BLINKING),
+	WordData.new("abominable", WordData.Type.BLINKING),
+	WordData.new("Iaucthaar'Xa", WordData.Type.NORMAL),
+	WordData.new("foulness", WordData.Type.BLINKING),
+	WordData.new("eldritch", WordData.Type.BLINKING),
+	WordData.new("netherworld", WordData.Type.BLINKING),
+	WordData.new("horrid", WordData.Type.BLINKING),
+	WordData.new("devouring", WordData.Type.BLINKING),
+	WordData.new("Yokaazh'Vhotl", WordData.Type.MULTI_VALIDATION, 2),
+])
+
+var current_word_list: WordList = word_list_easy
+
 var words: Array[BaseWord]  = []
 
 @export var word_timer: Timer
@@ -19,16 +133,16 @@ enum Phase {
 }
 
 var current_phase: Phase : set = _set_current_phase
-var timer_difficulties: Array[float] = [2, 1.75, 1.5]
-var speed_difficulties: Array[int] = [50, 75, 100]
-var medium_insight_treshold: int = 100
-var nightmare_insight_treshold: int = 200
+var timer_difficulties: Array[float] = [2, 1.9, 1.8]
+var speed_difficulties: Array[int] = [50, 60, 70]
+var medium_insight_treshold: int = 333
+var nightmare_insight_treshold: int = 666
 
 func _ready() -> void:
-	print(word_list.list.size())
 	word_timer.timeout.connect(_on_timeout)
 	EventBus.letter_typed.connect(_on_letter_typed)
 	EventBus.word_submitted.connect(_on_word_submitted)
+	EventBus.insight_changed.connect(_on_insight_changed)
 	player.area_entered.connect(_on_area_entered)
 	current_phase = Phase.EASY
 
@@ -46,12 +160,13 @@ func _set_current_phase(value: Phase) -> void:
 	phase_label.text = Phase.keys()[current_phase]
 	
 func _on_timeout() -> void:
-	spawn_word()
+	if (current_word_list.list.size() > 0):
+		spawn_word()
 	
 func spawn_word() -> void:
-	var word_data: WordData = word_list.list.pop_back()
+	var word_data: WordData = current_word_list.list.pop_front()
 	var word_text: String = word_data.text
-	word_list.list.push_front(word_data)
+	current_word_list.list.push_back(word_data)
 	
 	var word_instance: BaseWord
 	
@@ -61,7 +176,7 @@ func spawn_word() -> void:
 		WordData.Type.BLINKING: 
 			word_instance = word_factory.create_blinking_word(word_text, "wave")
 		WordData.Type.MULTI_VALIDATION: 
-			word_instance = word_factory.create_multivalidation_word(word_text, "wave")
+			word_instance = word_factory.create_multivalidation_word(word_text, "wave", word_data.validations)
 
 	word_instance.position = get_random_spawn_point()
 	get_parent().add_child(word_instance)
@@ -75,10 +190,10 @@ func get_random_spawn_point() -> Vector2:
 	var random_y: int = randi_range(0, max_y)
 	
 	match random_side:
-		0: return Vector2(random_x, -200) # up
-		1: return Vector2(max_x + 200, random_y) # right
-		2: return Vector2(random_x, max_y + 200) # down
-		3: return Vector2(-200, random_y) # left
+		0: return Vector2(random_x, 0) # up
+		1: return Vector2(max_x, random_y) # right
+		2: return Vector2(random_x, max_y) # down
+		3: return Vector2(0, random_y) # left
 		_: return Vector2.ZERO
 	
 func _on_letter_typed(text: String) -> void:
@@ -101,8 +216,6 @@ func _on_letter_typed(text: String) -> void:
 		for partial_matching_word in partial_matching_words:
 			partial_matching_word.reset()
 			partial_matching_word.re_render()
-				
-				
 		
 func _on_word_submitted(text: String) -> void:
 	
@@ -116,16 +229,13 @@ func _on_word_submitted(text: String) -> void:
 				if (word.health == 0):
 					mark_as_delete.push_front(i)
 					player.insight += 10
+				return
 			else:
 				mark_as_delete.push_front(i)
 				player.insight += 10
 		else:
 			word.reset()
 			word.re_render()
-	if (current_phase == Phase.EASY and player.insight > medium_insight_treshold):
-		current_phase = Phase.MEDIUM
-	if (current_phase == Phase.MEDIUM and player.insight > nightmare_insight_treshold):
-		current_phase = Phase.NIGHTMARE
 	
 	for index_to_delete in mark_as_delete:
 		var word: BaseWord = words[index_to_delete]
@@ -142,3 +252,13 @@ func _on_area_entered(body: Node2D) -> void:
 		words.erase(word)
 		word.queue_free()
 		player.health -= 10
+
+func _on_insight_changed(insight: int) -> void:
+	if (current_phase == Phase.EASY and insight >= medium_insight_treshold):
+		current_phase = Phase.MEDIUM
+		current_word_list = word_list_medium
+		EventBus.phase_changed.emit(current_phase)
+	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
+		current_phase = Phase.NIGHTMARE
+		current_word_list = word_list_nightmare
+		EventBus.phase_changed.emit(current_phase)

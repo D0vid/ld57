@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://djgxsri1ib2s6"]
+
+[ext_resource type="Shader" uid="uid://cwr2mfswvraww" path="res://main/superwave.gdshader" id="1_i4gk7"]
+
+[resource]
+shader = ExtResource("1_i4gk7")
+shader_parameter/spin_rotation_speed = 0.5
+shader_parameter/move_speed = 10.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.607843, 0.105882, 0.188235, 1)
+shader_parameter/colour_2 = Color(0.372549, 0.0392157, 0.4, 1)
+shader_parameter/colour_3 = Color(0.172549, 0.172549, 0.172549, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 1e+06
+shader_parameter/is_rotating = true

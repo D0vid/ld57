@@ -20,8 +20,9 @@ func create_blinking_word(text: String, bbcode_effect: String) -> BaseWord:
 	blinking_word.re_render()
 	return blinking_word
 	
-func create_multivalidation_word(text: String, bbcode_effect) -> BaseWord:
+func create_multivalidation_word(text: String, bbcode_effect: String, validations: int) -> BaseWord:
 	var multi_validation_word = multi_validation_word_scene.instantiate() as MultiValidationWord
+	multi_validation_word.health = validations
 	multi_validation_word.set_text(text)
 	multi_validation_word.set_bbcode_template("[%s]%%s[]" % bbcode_effect)
 	multi_validation_word.re_render()

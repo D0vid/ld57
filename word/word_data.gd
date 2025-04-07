@@ -10,9 +10,10 @@ enum Type {
 
 var text: String
 var type: Type
-var speed: int
+var validations: int
 
-func _init(_text: String, _type: Type, _speed: int):
+func _init(_text: String, _type: Type, _validations = 0):
 	text = _text;
 	type = _type;
-	speed = _speed;
+	validations = _validations
+	
