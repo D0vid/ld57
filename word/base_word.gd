@@ -140,4 +140,9 @@ func highlight_typing(part: String):
 	
 func make_inactive() -> void:
 	inactive = true
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0, 0.5)
+	tween.tween_callback(_make_invisible)
+	
+func _make_invisible() -> void:
 	visible = false

@@ -32,8 +32,7 @@ position = Vector2(76.5, 25)
 shape = SubResource("RectangleShape2D_hqwqq")
 
 [node name="RicherTextLabel" parent="." instance=ExtResource("2_efkxa")]
-theme_override_colors/font_outline_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/italics_font = SubResource("FontVariation_efkxa")
 theme_override_fonts/bold_italics_font = SubResource("FontVariation_0bif5")
 theme_override_fonts/bold_font = SubResource("FontVariation_vbl5p")
-outline_adjust = 0.8
+bbcode = "Word"
