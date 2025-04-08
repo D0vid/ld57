@@ -8,6 +8,7 @@ var words: Array[BaseWord]  = []
 @export var word_factory: WordFactory
 @export var player: Player
 @export var phase_label: Label
+@export var combo_label: RichTextLabel
 
 enum Phase {
 	EASY,
@@ -29,7 +30,7 @@ func _ready() -> void:
 	current_phase = Phase.EASY
 	word_spawner = WordSpawner.new(word_factory)
 	AudioPlayer.play_loop1()
-	
+	Stats.reset()
 
 func _physics_process(delta: float) -> void:
 	var new_word = word_spawner.spawn_word(current_phase, delta)
@@ -116,7 +117,6 @@ func _on_insight_changed(insight: int) -> void:
 		current_phase = Phase.MEDIUM
 		AudioPlayer.play_loop2()
 		AudioPlayer.play_bell()
-		player.set_color_green()
 		EventBus.phase_changed.emit(current_phase)
 	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
 		for word in words:
@@ -124,5 +124,4 @@ func _on_insight_changed(insight: int) -> void:
 		current_phase = Phase.NIGHTMARE
 		AudioPlayer.play_loop3()
 		AudioPlayer.play_bell()
-		player.set_color_red()
 		EventBus.phase_changed.emit(current_phase)

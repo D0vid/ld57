@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="2_5x5gj"]
 [ext_resource type="Texture2D" uid="uid://da0ad7vf0sins" path="res://game_over/eldritch.png" id="2_fq5u1"]
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" node_paths=PackedStringArray("label")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eaxdo")
+label = NodePath("RichTextLabel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -46,10 +47,13 @@ bbcode_enabled = true
 text = "[color=darkred][font_size=64]Game Over[/font_size][/color]
 
 
-Johnny succumbed to the depths of his consciousness
+Johnny Depths succumbed to the depths of his mind
 
 
 -
+
+
+Words counter: %total_counter% | Max combo: %max_combo%
 
 
 Press R to try again"
