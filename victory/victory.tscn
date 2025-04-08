@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://da0ad7vf0sins" path="res://game_over/eldritch.png" id="2_2p8vy"]
 [ext_resource type="FontFile" uid="uid://bc02ovgy8suhy" path="res://fonts/MODERN TYPEWRITER.ttf" id="2_t53of"]
 
-[node name="Victory" type="Control"]
+[node name="Victory" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4kiho")
+label = NodePath("RichTextLabel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

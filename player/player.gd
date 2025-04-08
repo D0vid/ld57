@@ -30,5 +30,5 @@ func _set_insight(value: int) -> void:
 	Stats.combo_counter += 1
 	insight = value
 	EventBus.insight_changed.emit(insight)
-	if insight >= 1000:
+	if insight >= 10:
 		EventBus.victory.emit()
