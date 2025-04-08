@@ -1,11 +1,13 @@
 shader_type canvas_item;
 
+uniform vec4 tint_color : source_color = vec4(1.0, 0.71, 0.76, 1.0);
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	COLOR = texture(TEXTURE, UV) * vec4(0, 0, 0, 1);
+COLOR = texture(TEXTURE, UV) * tint_color;
 }
 
 //void light() {

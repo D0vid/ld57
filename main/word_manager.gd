@@ -29,6 +29,7 @@ func _ready() -> void:
 	current_phase = Phase.EASY
 	word_spawner = WordSpawner.new(word_factory)
 	AudioPlayer.play_loop1()
+	
 
 func _physics_process(delta: float) -> void:
 	var new_word = word_spawner.spawn_word(current_phase, delta)
@@ -48,6 +49,7 @@ func _set_current_phase(value: Phase) -> void:
 	EventBus.phase_changed.emit(value)
 
 func _on_letter_typed(text: String) -> void:
+	AudioPlayer.play_type()
 	var partial_matching_words: Array[BaseWord] = []
 	var found_total_matching_word = false
 	
@@ -69,7 +71,8 @@ func _on_letter_typed(text: String) -> void:
 			partial_matching_word.re_render()
 		
 func _on_word_submitted(text: String) -> void:
-	
+	AudioPlayer.play_type()
+
 	var mark_as_delete: Array[int] = []
 	
 	for i: int in range(0, words.size()):
@@ -113,6 +116,7 @@ func _on_insight_changed(insight: int) -> void:
 		current_phase = Phase.MEDIUM
 		AudioPlayer.play_loop2()
 		AudioPlayer.play_bell()
+		player.set_color_green()
 		EventBus.phase_changed.emit(current_phase)
 	if (current_phase == Phase.MEDIUM and insight >= nightmare_insight_treshold):
 		for word in words:
@@ -120,4 +124,5 @@ func _on_insight_changed(insight: int) -> void:
 		current_phase = Phase.NIGHTMARE
 		AudioPlayer.play_loop3()
 		AudioPlayer.play_bell()
+		player.set_color_red()
 		EventBus.phase_changed.emit(current_phase)

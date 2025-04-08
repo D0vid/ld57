@@ -1,8 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://c6hjstc5iebpx"]
+[gd_scene load_steps=77 format=3 uid="uid://c6hjstc5iebpx"]
 
 [ext_resource type="Texture2D" uid="uid://dh8u6s0uydi4b" path="res://player/idle/idle0001.png" id="1_6wior"]
 [ext_resource type="Script" uid="uid://bluepdtgpqy5d" path="res://player/player.gd" id="1_or4qq"]
-[ext_resource type="Shader" uid="uid://dlxsm2ped3vd7" path="res://player/player.gdshader" id="2_2h6tc"]
+[ext_resource type="Material" uid="uid://cgjf43ey5axxo" path="res://player/player.tres" id="2_2h6tc"]
 [ext_resource type="Texture2D" uid="uid://c28snbao0odal" path="res://player/idle/idle0002.png" id="2_p5tca"]
 [ext_resource type="Texture2D" uid="uid://d2pm0lisoev5r" path="res://player/idle/idle0003.png" id="3_jbx34"]
 [ext_resource type="Texture2D" uid="uid://dcir3cxb5rt3e" path="res://player/idle/idle0004.png" id="4_s3g0c"]
@@ -72,14 +72,11 @@
 [ext_resource type="Texture2D" uid="uid://bk6b1q3y58me6" path="res://player/typingright/typingright0005.png" id="65_7l6ig"]
 [ext_resource type="Texture2D" uid="uid://c160imivh1evd" path="res://player/typingleft/AnimTypingLeft0004.png" id="65_8rogd"]
 [ext_resource type="Texture2D" uid="uid://cnkme6w3rj744" path="res://player/typingleft/AnimTypingLeft0005.png" id="66_48p26"]
-[ext_resource type="Script" path="res://player/PlayerAnimator.gd" id="67_hggc2"]
+[ext_resource type="Script" uid="uid://7o4lbrkcn4wm" path="res://player/PlayerAnimator.gd" id="67_hggc2"]
 [ext_resource type="Texture2D" uid="uid://ckv132w1h8tk5" path="res://player/typewriter/Typewritter0001.png" id="73_do7qw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwkvk"]
 size = Vector2(128, 128)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2h6tc"]
-shader = ExtResource("2_2h6tc")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jbx34"]
 animations = [{
@@ -309,14 +306,16 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("sprite", "typewriter_sprite")]
 script = ExtResource("1_or4qq")
+sprite = NodePath("AnimatedSprite2D")
+typewriter_sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xwkvk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_2h6tc")
+material = ExtResource("2_2h6tc")
 position = Vector2(22, -32)
 sprite_frames = SubResource("SpriteFrames_jbx34")
 animation = &"typingleft"
@@ -324,5 +323,6 @@ autoplay = "idle"
 script = ExtResource("67_hggc2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_2h6tc")
 position = Vector2(-6, 29)
 texture = ExtResource("73_do7qw")
